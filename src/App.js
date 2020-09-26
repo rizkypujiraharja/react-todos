@@ -7,11 +7,28 @@ import './App.css';
 class App extends React.Component {
   state = {
     todos: [
-      "Drink", "Eat", "Sleep"
+      {
+        id: 1,
+        name: "Drink"
+      }, {
+        id: 2,
+        name: "Eat"
+      }, {
+        id: 3,
+        name: "Sleep"
+      }
     ]
   }
+
   render() {
-    const {todos} = this.state
+    const { todos } = this.state
+
+    const deleteTodo = todoId => {
+      this.setState({
+        todos: this.state.todos.filter(todo => todo.id !== todoId)
+      })
+    }
+
     return (
       <div className="app">
         <div className="logo">
@@ -20,7 +37,7 @@ class App extends React.Component {
         </div>
         <div className="list">
           {todos.map((todo, index) =>
-            <TodoItem key={index} todo={todo}></TodoItem>
+            <TodoItem key={index} todo={todo} onDelete={deleteTodo}></TodoItem>
           )}
         </div>
         <FormInput></FormInput>

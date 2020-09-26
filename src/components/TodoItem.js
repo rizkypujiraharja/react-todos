@@ -1,13 +1,18 @@
 import React from 'react'
 import Button from './Button'
+import PropTypes from 'prop-types'
 
-const TodoItem = ({todo}) => {
+const TodoItem = ({todo, onDelete}) => {
+    const deleteTodo = () => {
+        onDelete(todo.id)
+    }
+
     return (
         <div style={todoStyle}>
-            <p>{todo}</p>
+            <p>{todo.name}</p>
             <div>
-                <Button label="Edit" color="warning"/>
-                <Button label="Delete" color="danger" />
+                <Button label="Edit" color="warning" />
+                <Button label="Delete" color="danger" action={deleteTodo} />
             </div>
         </div>
     )
@@ -23,4 +28,9 @@ const todoStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center'
+}
+
+TodoItem.propTypes = {
+    todo: PropTypes.object.isRequired,
+    onDelete: PropTypes.func.isRequired
 }

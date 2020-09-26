@@ -3,8 +3,9 @@
     width: auto;
     margin: 0 0.2rem;
     border: none;
-    color: #FFF;
-    padding: 0 0.5rem
+    color: #000;
+    padding: 0 0.5rem;
+    background-color: #fff;
 }
 
 .btn:focus{
@@ -13,10 +14,13 @@
 
 .btn-primary{
     background-color: #06d6a0;
+    color: #fff;
 }
 .btn-warning{
     background-color: #ffd166;
+    color: #fff;
 }
 .btn-danger{
     background-color: #ef476f;
+    color: #fff;
 }
