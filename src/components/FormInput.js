@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from './Button'
-import './../FormInput.css'
+import './FormInput.css'
 
 class FormInput extends React.Component {
     state = {
