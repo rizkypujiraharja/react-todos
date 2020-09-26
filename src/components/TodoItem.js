@@ -21,7 +21,7 @@ const TodoItem = ({todo, onDelete}) => {
 export default TodoItem
 
 const todoStyle = {
-    background: '#abc4ff',
+    background: '#b6ccfe',
     height: '3rem',
     padding: '0 1rem',
     margin: '0.5rem 0',

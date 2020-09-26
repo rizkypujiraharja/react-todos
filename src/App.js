@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import FormInput from './components/FormInput'
 import TodoItem from './components/TodoItem'
 import logo from './logo.svg'
@@ -6,29 +7,26 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    todos: [
-      {
-        id: 1,
-        name: "Drink"
-      }, {
-        id: 2,
-        name: "Eat"
-      }, {
-        id: 3,
-        name: "Sleep"
-      }
-    ]
+    todos: []
+  }
+  deleteTodo = todoId => {
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== todoId)
+    })
+  }
+  saveTodo = name => {
+    const newTodo = {
+      id: uuidv4(),
+      name: name,
+      is_done: false
+    }
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    })
   }
 
   render() {
     const { todos } = this.state
-
-    const deleteTodo = todoId => {
-      this.setState({
-        todos: this.state.todos.filter(todo => todo.id !== todoId)
-      })
-    }
-
     return (
       <div className="app">
         <div className="logo">
@@ -37,10 +35,10 @@ class App extends React.Component {
         </div>
         <div className="list">
           {todos.map((todo, index) =>
-            <TodoItem key={index} todo={todo} onDelete={deleteTodo}></TodoItem>
+            <TodoItem key={index} todo={todo} onDelete={this.deleteTodo}></TodoItem>
           )}
         </div>
-        <FormInput></FormInput>
+        <FormInput save={this.saveTodo}></FormInput>
       </div>
     );
   }

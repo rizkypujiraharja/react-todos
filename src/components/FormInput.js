@@ -3,11 +3,28 @@ import Button from './Button'
 import './../FormInput.css'
 
 class FormInput extends React.Component {
+    state = {
+        text:""
+    }
+
+    onChange = event => {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    saveTodo = () => {
+        this.props.save(this.state.text)
+        this.setState({
+            text: ""
+        })
+    }
+
     render() {
         return (
             <div style={formStyle}>
-                <input type="text" style={inputStyle} placeholder="Add todo" />
-                <Button label="Save" color="primary" />
+                <input type="text" style={inputStyle} value={this.state.text} placeholder="Add todo" onChange={this.onChange} />
+                <Button label="Save" color="primary" action={this.saveTodo} />
             </div>
         )
     }
