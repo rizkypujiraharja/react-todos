@@ -1,0 +1,22 @@
+.btn{
+    height: 1.7rem;
+    width: auto;
+    margin: 0 0.2rem;
+    border: none;
+    color: #FFF;
+    padding: 0 0.5rem
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.btn-primary{
+    background-color: #06d6a0;
+}
+.btn-warning{
+    background-color: #ffd166;
+}
+.btn-danger{
+    background-color: #ef476f;
+}

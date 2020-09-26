@@ -1,0 +1,18 @@
+.app {
+  width: 40%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  width: 120px;
+}
+
+.logo h3 {
+  color: #1b4965;
+}
