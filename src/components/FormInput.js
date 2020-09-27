@@ -1,33 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Button from './Button'
 import './FormInput.css'
+import { addTodo } from './../store'
 
-class FormInput extends React.Component {
-    state = {
-        text:""
+const FormInput = () => {
+    const [text, setText] = useState("")
+
+    const dispatch = useDispatch()
+
+    const onChange = event => {
+        setText(event.target.value)
     }
 
-    onChange = event => {
-        this.setState({
-            text: event.target.value
-        })
+    const saveTodo = () => {
+        dispatch(addTodo(text))
+        setText("")
     }
 
-    saveTodo = () => {
-        this.props.save(this.state.text)
-        this.setState({
-            text: ""
-        })
-    }
-
-    render() {
-        return (
-            <div style={formStyle}>
-                <input type="text" style={inputStyle} value={this.state.text} placeholder="Add todo" onChange={this.onChange} />
-                <Button label="Save" color="primary" action={this.saveTodo} />
-            </div>
-        )
-    }
+    return (
+        <div style={formStyle}>
+            <input type="text" style={inputStyle} value={text} placeholder="Add todo" onChange={onChange} />
+            <Button label="Save" color="primary" action={saveTodo} />
+        </div>
+    )
 }
 
 export default FormInput

@@ -1,56 +1,26 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
-import ls from 'local-storage'
+import { Provider } from 'react-redux'
+import store from './store'
 import FormInput from './components/FormInput'
-import TodoItem from './components/TodoItem'
+import Todos from './components/Todos'
 import logo from './logo.svg'
 import './App.css';
 
-class App extends React.Component {
-  state = {
-    todos: ls.get('todos') || []
-  }
-  deleteTodo = todoId => {
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.id !== todoId)
-    }, () => ls.set('todos', this.state.todos))
-  }
-  doneTodo = todoId => {
-    this.setState({
-      todos: this.state.todos.map(todo => {
-        (todo.id === todoId) && (todo.is_done = true)
-        return todo
-      })
-    }, () => ls.set('todos', this.state.todos))
-  }
-  saveTodo = name => {
-    const newTodo = {
-      id: uuidv4(),
-      name,
-      is_done: false
-    }
-    this.setState({
-      todos: [...this.state.todos, newTodo]
-    }, () => ls.set('todos', this.state.todos))
-  }
+const App = () => {
 
-  render() {
-    const { todos } = this.state
-    return (
+
+  return (
+    <Provider store={store}>
       <div className="app">
         <div className="logo">
           <img src={logo} alt="React Todos" />
           <h3>React Todos</h3>
         </div>
-        <div className="list">
-          {todos.map((todo, index) =>
-            <TodoItem key={index} todo={todo} onDelete={this.deleteTodo} onDone={this.doneTodo}></TodoItem>
-          )}
-        </div>
-        <FormInput save={this.saveTodo}></FormInput>
+        <Todos />
+        <FormInput></FormInput>
       </div>
-    );
-  }
+    </Provider>
+  );
 
 }
 
