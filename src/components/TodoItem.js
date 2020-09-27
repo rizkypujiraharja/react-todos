@@ -2,16 +2,22 @@ import React from 'react'
 import Button from './Button'
 import PropTypes from 'prop-types'
 
-const TodoItem = ({todo, onDelete}) => {
+const TodoItem = ({todo, onDelete, onDone}) => {
     const deleteTodo = () => {
         onDelete(todo.id)
+    }
+    const doneTodo = () => {
+        onDone(todo.id)
     }
 
     return (
         <div style={todoStyle}>
-            <p>{todo.name}</p>
+            <p style={todo.is_done ? isDone : {}}>{todo.name}</p>
             <div>
-                <Button label="Edit" color="warning" />
+                {
+                    !todo.is_done &&
+                        <Button label="Done" color="success" action={doneTodo} />
+                }
                 <Button label="Delete" color="danger" action={deleteTodo} />
             </div>
         </div>
@@ -19,6 +25,10 @@ const TodoItem = ({todo, onDelete}) => {
 }
 
 export default TodoItem
+
+const isDone = {
+    textDecoration: 'line-through'
+}
 
 const todoStyle = {
     background: '#b6ccfe',

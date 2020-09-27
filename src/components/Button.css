@@ -12,8 +12,12 @@
     outline: none;
 }
 
-.btn-primary{
+.btn-success{
     background-color: #06d6a0;
+    color: #fff;
+}
+.btn-primary{
+    background-color: #4cc9f0;
     color: #fff;
 }
 .btn-warning{

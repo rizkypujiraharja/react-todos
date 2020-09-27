@@ -2,7 +2,7 @@ import React from 'react'
 import './Button.css'
 import PropTypes from 'prop-types'
 
-const Button = ({label, color, action}) => {
+const Button = ({ label, color, action }) => {
     const doAction = () => {
         action()
     }
@@ -19,3 +19,7 @@ Button.propTypes = {
     color: PropTypes.string,
     action: PropTypes.func
 }
+
+Button.defaultProps = {
+    action: () => { }
+};

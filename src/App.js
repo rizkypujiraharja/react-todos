@@ -15,6 +15,14 @@ class App extends React.Component {
       todos: this.state.todos.filter(todo => todo.id !== todoId)
     }, () => ls.set('todos', this.state.todos))
   }
+  doneTodo = todoId => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        (todo.id === todoId) && (todo.is_done = true)
+        return todo
+      })
+    }, () => ls.set('todos', this.state.todos))
+  }
   saveTodo = name => {
     const newTodo = {
       id: uuidv4(),
@@ -36,7 +44,7 @@ class App extends React.Component {
         </div>
         <div className="list">
           {todos.map((todo, index) =>
-            <TodoItem key={index} todo={todo} onDelete={this.deleteTodo}></TodoItem>
+            <TodoItem key={index} todo={todo} onDelete={this.deleteTodo} onDone={this.doneTodo}></TodoItem>
           )}
         </div>
         <FormInput save={this.saveTodo}></FormInput>
