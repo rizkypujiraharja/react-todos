@@ -1,6 +1,5 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import ls from 'local-storage'
 import TodoItem from './TodoItem'
 import { removeTodo, markDoneTodo } from './../store'
 
