@@ -1,7 +1,7 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import TodoItem from './TodoItem'
-import { removeTodo, markDoneTodo } from './../store'
+import { removeTodo, markDoneTodo } from './../store/actions/todo'
 
 const Todos = () => {
     const todos = useSelector(state => state.lists.todos)

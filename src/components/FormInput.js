@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Button from './Button'
 import './FormInput.css'
-import { addTodo } from './../store'
+import { addTodo } from './../store/actions/todo'
 
 const FormInput = () => {
     const [text, setText] = useState("")
